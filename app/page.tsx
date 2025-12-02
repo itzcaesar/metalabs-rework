@@ -1,9 +1,19 @@
-import { ProductCard } from "@/components/product-card";
+"use client";
+
 import { ProductCarousel } from "@/components/product-carousel";
 import { BackgroundSlider } from "@/components/background-slider";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Sparkles, Zap, Trophy, BookOpen, Gamepad2, GraduationCap, Glasses, FlaskConical } from "lucide-react";
+import { motion } from "framer-motion";
+import { 
+  FadeInUp, 
+  ScaleIn, 
+  StaggerContainer, 
+  StaggerItem,
+  Float,
+  BlurIn
+} from "@/components/motion";
 
 export default function HomePage() {
   const stats = [
@@ -47,32 +57,59 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(221,47,55,0.2),transparent_50%)] z-[1]" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8 animate-fadeInUp">
+          <motion.div 
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8"
+          >
             <Sparkles className="w-4 h-4 text-primary" />
             <span className="text-sm font-medium">Telkom University Research Lab</span>
-          </div>
+          </motion.div>
           
           {/* Metalabs Logo */}
-          <div className="flex justify-center mb-8 animate-fadeInUp" style={{ animationDelay: '0.1s' }}>
-            <Image
-              src="/images/MetalabsH.png"
-              alt="Metalabs"
-              width={600}
-              height={200}
-              className="h-32 sm:h-40 lg:h-48 w-auto object-contain"
-              priority
-            />
-          </div>
+          <Float duration={4}>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
+              className="flex justify-center mb-8"
+            >
+              <Image
+                src="/images/MetalabsH.png"
+                alt="Metalabs"
+                width={600}
+                height={200}
+                className="h-32 sm:h-40 lg:h-48 w-auto object-contain"
+                priority
+              />
+            </motion.div>
+          </Float>
           
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 animate-fadeInUp font-pixel" style={{ animationDelay: '0.15s' }}>
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 font-pixel"
+          >
             <span className="text-foreground/90">Interactive Multimedia For Everything</span>
-          </h1>
+          </motion.h1>
           
-          <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 animate-fadeInUp" style={{ animationDelay: '0.2s' }}>
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12"
+          >
             Driving innovation in game-based learning, educational technology, and immersive experiences at Telkom University
-          </p>
+          </motion.p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fadeInUp" style={{ animationDelay: '0.3s' }}>
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          >
             <Link 
               href="/product"
               className="group px-8 py-4 bg-gradient-to-r from-[#DD2F37] to-[#D86F75] hover:from-[#C42A31] hover:to-[#C45F64] text-white rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2"
@@ -87,44 +124,70 @@ export default function HomePage() {
               <BookOpen className="w-5 h-5" />
               View Research
             </Link>
-          </div>
+          </motion.div>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 animate-fadeInUp" style={{ animationDelay: '0.4s' }}>
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20"
+          >
             {stats.map((stat, idx) => (
-              <div key={idx} className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">{stat.value}</div>
+              <motion.div 
+                key={idx} 
+                className="text-center"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.6 + idx * 0.1 }}
+              >
+                <motion.div 
+                  className="text-4xl font-bold text-primary mb-2"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.7 + idx * 0.1 }}
+                >
+                  {stat.value}
+                </motion.div>
                 <div className="text-sm text-muted-foreground">{stat.label}</div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* About Section */}
       <section className="py-24 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8">
-            <Zap className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium">About Metalabs</span>
-          </div>
+          <FadeInUp>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8">
+              <Zap className="w-4 h-4 text-primary" />
+              <span className="text-sm font-medium">About Metalabs</span>
+            </div>
+          </FadeInUp>
           
-          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-8 font-pixel">
-            Where Innovation Meets{" "}
-            <span className="gradient-text">Education</span>
-          </h2>
+          <FadeInUp delay={0.1}>
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-8 font-pixel">
+              Where Innovation Meets{" "}
+              <span className="gradient-text">Education</span>
+            </h2>
+          </FadeInUp>
           
-          <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-            Welcome to Metalabs, the Multimedia Engineering Research Laboratory at Telkom University. 
-            We specialize in interactive multimedia for everything, driving innovation in game-based learning, 
-            educational technology, and immersive experiences.
-          </p>
-          <p className="text-xl text-muted-foreground leading-relaxed">
-            Guided by our core values of <strong className="text-foreground">Education</strong>,{" "}
-            <strong className="text-foreground">Incubation</strong>, and{" "}
-            <strong className="text-foreground">Monetization</strong>, we transform creative ideas into 
-            impactful solutions that benefit students, researchers, and the wider community.
-          </p>
+          <BlurIn delay={0.2}>
+            <p className="text-xl text-muted-foreground leading-relaxed mb-6">
+              Welcome to Metalabs, the Multimedia Engineering Research Laboratory at Telkom University. 
+              We specialize in interactive multimedia for everything, driving innovation in game-based learning, 
+              educational technology, and immersive experiences.
+            </p>
+          </BlurIn>
+          <BlurIn delay={0.3}>
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              Guided by our core values of <strong className="text-foreground">Education</strong>,{" "}
+              <strong className="text-foreground">Incubation</strong>, and{" "}
+              <strong className="text-foreground">Monetization</strong>, we transform creative ideas into 
+              impactful solutions that benefit students, researchers, and the wider community.
+            </p>
+          </BlurIn>
         </div>
       </section>
 
@@ -132,16 +195,22 @@ export default function HomePage() {
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-2">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
-              <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium">Featured Products</span>
-            </div>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4 font-pixel">
-              Our <span className="gradient-text">Products</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Explore our innovative games and interactive multimedia applications
-            </p>
+            <FadeInUp>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
+                <Sparkles className="w-4 h-4 text-primary" />
+                <span className="text-sm font-medium">Featured Products</span>
+              </div>
+            </FadeInUp>
+            <FadeInUp delay={0.1}>
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4 font-pixel">
+                Our <span className="gradient-text">Products</span>
+              </h2>
+            </FadeInUp>
+            <FadeInUp delay={0.2}>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Explore our innovative games and interactive multimedia applications
+              </p>
+            </FadeInUp>
           </div>
         </div>
 
@@ -150,7 +219,7 @@ export default function HomePage() {
           <ProductCarousel />
         </div>
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+        <FadeInUp className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
           <div className="text-center">
             <Link 
               href="/product"
@@ -160,112 +229,195 @@ export default function HomePage() {
               <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
-        </div>
+        </FadeInUp>
       </section>
 
       {/* Features Section - Bento Grid */}
       <section className="py-24 bg-muted/30">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-              <Trophy className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium">What We Do</span>
-            </div>
+            <FadeInUp>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+                <Trophy className="w-4 h-4 text-primary" />
+                <span className="text-sm font-medium">What We Do</span>
+              </div>
+            </FadeInUp>
             
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold font-pixel">
-              Our <span className="gradient-text">Expertise</span>
-            </h2>
+            <FadeInUp delay={0.1}>
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold font-pixel">
+                Our <span className="gradient-text">Expertise</span>
+              </h2>
+            </FadeInUp>
           </div>
 
           {/* Bento Grid Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[180px]">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[180px]">
             {/* Game Development - Large */}
-            <div className="md:col-span-2 md:row-span-2 group relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#DD2F37] to-[#B86A6E] p-8 flex flex-col justify-end cursor-pointer hover:scale-[1.02] transition-transform duration-300">
-              <div className="absolute top-6 right-6">
-                <Gamepad2 className="w-16 h-16 text-white/20" />
-              </div>
-              <div className="relative z-10">
-                <h3 className="text-3xl font-bold text-white mb-3">
-                  {features[0].title}
-                </h3>
-                <p className="text-white/80 text-lg leading-relaxed">
-                  {features[0].description}
-                </p>
-              </div>
-            </div>
+            <StaggerItem className="md:col-span-2 md:row-span-2">
+              <motion.div 
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="h-full group relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#DD2F37] to-[#B86A6E] p-8 flex flex-col justify-end cursor-pointer"
+              >
+                <motion.div 
+                  className="absolute top-6 right-6"
+                  animate={{ rotate: [0, 5, -5, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <Gamepad2 className="w-16 h-16 text-white/20" />
+                </motion.div>
+                <div className="relative z-10">
+                  <h3 className="text-3xl font-bold text-white mb-3">
+                    {features[0].title}
+                  </h3>
+                  <p className="text-white/80 text-lg leading-relaxed">
+                    {features[0].description}
+                  </p>
+                </div>
+              </motion.div>
+            </StaggerItem>
 
             {/* Interactive Learning */}
-            <div className="md:col-span-2 group relative rounded-3xl overflow-hidden bg-card border border-border p-6 flex items-center gap-6 cursor-pointer hover:border-primary/50 hover:shadow-xl transition-all duration-300">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#DD2F37] to-[#D86F75] flex items-center justify-center shrink-0">
-                <GraduationCap className="w-8 h-8 text-white" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                  {features[1].title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {features[1].description}
-                </p>
-              </div>
-            </div>
+            <StaggerItem className="md:col-span-2">
+              <motion.div 
+                whileHover={{ scale: 1.02, borderColor: "rgba(221, 47, 55, 0.5)" }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="h-full group relative rounded-3xl overflow-hidden bg-card border border-border p-6 flex items-center gap-6 cursor-pointer"
+              >
+                <motion.div 
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.5 }}
+                  className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#DD2F37] to-[#D86F75] flex items-center justify-center shrink-0"
+                >
+                  <GraduationCap className="w-8 h-8 text-white" />
+                </motion.div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                    {features[1].title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {features[1].description}
+                  </p>
+                </div>
+              </motion.div>
+            </StaggerItem>
 
             {/* AR/VR Solutions */}
-            <div className="group relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#D86F75] to-[#E89A9E] p-6 flex flex-col justify-between cursor-pointer hover:scale-[1.02] transition-transform duration-300">
-              <Glasses className="w-10 h-10 text-white/80" />
-              <div>
-                <h3 className="text-xl font-bold text-white mb-1">
-                  {features[2].title}
-                </h3>
-                <p className="text-white/70 text-sm">
-                  AR & VR experiences
-                </p>
-              </div>
-            </div>
+            <StaggerItem>
+              <motion.div 
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="h-full group relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#D86F75] to-[#E89A9E] p-6 flex flex-col justify-between cursor-pointer"
+              >
+                <motion.div
+                  animate={{ y: [0, -5, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <Glasses className="w-10 h-10 text-white/80" />
+                </motion.div>
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-1">
+                    {features[2].title}
+                  </h3>
+                  <p className="text-white/70 text-sm">
+                    AR & VR experiences
+                  </p>
+                </div>
+              </motion.div>
+            </StaggerItem>
 
             {/* Research Innovation */}
-            <div className="group relative rounded-3xl overflow-hidden bg-card border border-border p-6 flex flex-col justify-between cursor-pointer hover:border-primary/50 hover:shadow-xl transition-all duration-300">
-              <FlaskConical className="w-10 h-10 text-primary" />
-              <div>
-                <h3 className="text-xl font-bold group-hover:text-primary transition-colors mb-1">
-                  {features[3].title}
-                </h3>
-                <p className="text-muted-foreground text-sm">
-                  Cutting-edge research
-                </p>
-              </div>
-            </div>
-          </div>
+            <StaggerItem>
+              <motion.div 
+                whileHover={{ scale: 1.05, borderColor: "rgba(221, 47, 55, 0.5)" }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="h-full group relative rounded-3xl overflow-hidden bg-card border border-border p-6 flex flex-col justify-between cursor-pointer"
+              >
+                <motion.div
+                  animate={{ rotate: [0, 10, -10, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <FlaskConical className="w-10 h-10 text-primary" />
+                </motion.div>
+                <div>
+                  <h3 className="text-xl font-bold group-hover:text-primary transition-colors mb-1">
+                    {features[3].title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm">
+                    Cutting-edge research
+                  </p>
+                </div>
+              </motion.div>
+            </StaggerItem>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#DD2F37] via-[#D86F75] to-[#B86A6E] p-12 sm:p-16 text-white text-center">
-            <div className="absolute inset-0 bg-black/20" />
-            <div className="relative z-10">
-              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-6 font-pixel">
-                Ready to Transform Education?
-              </h2>
-              <p className="text-lg sm:text-xl text-white/90 mb-10 max-w-2xl mx-auto">
-                Join us in creating innovative solutions for game-based learning and educational technology
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link 
-                  href="/courses"
-                  className="px-8 py-4 bg-white text-[#DD2F37] rounded-full font-semibold hover:bg-white/90 transition-all transform hover:scale-105"
+          <ScaleIn>
+            <motion.div 
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 200, damping: 20 }}
+              className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#DD2F37] via-[#D86F75] to-[#B86A6E] p-12 sm:p-16 text-white text-center"
+            >
+              <div className="absolute inset-0 bg-black/20" />
+              
+              {/* Animated background shapes */}
+              <motion.div
+                className="absolute top-10 left-10 w-32 h-32 rounded-full bg-white/5"
+                animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <motion.div
+                className="absolute bottom-10 right-10 w-24 h-24 rounded-full bg-white/5"
+                animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              />
+              
+              <div className="relative z-10">
+                <motion.h2 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="text-xl sm:text-2xl lg:text-3xl font-bold mb-6 font-pixel"
                 >
-                  Explore Courses
-                </Link>
-                <Link 
-                  href="/about"
-                  className="px-8 py-4 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full font-semibold hover:bg-white/30 transition-all transform hover:scale-105"
+                  Ready to Transform Education?
+                </motion.h2>
+                <motion.p 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="text-lg sm:text-xl text-white/90 mb-10 max-w-2xl mx-auto"
                 >
-                  Learn More
-                </Link>
+                  Join us in creating innovative solutions for game-based learning and educational technology
+                </motion.p>
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="flex flex-col sm:flex-row gap-4 justify-center"
+                >
+                  <Link 
+                    href="/courses"
+                    className="px-8 py-4 bg-white text-[#DD2F37] rounded-full font-semibold hover:bg-white/90 transition-all transform hover:scale-105"
+                  >
+                    Explore Courses
+                  </Link>
+                  <Link 
+                    href="/about"
+                    className="px-8 py-4 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full font-semibold hover:bg-white/30 transition-all transform hover:scale-105"
+                  >
+                    Learn More
+                  </Link>
+                </motion.div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </ScaleIn>
         </div>
       </section>
     </div>

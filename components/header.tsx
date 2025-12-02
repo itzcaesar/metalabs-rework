@@ -14,6 +14,7 @@ import {
 import { ThemeToggle } from "@/components/theme-toggle";
 import { PixelRunner } from "@/components/pixel-runner";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export function Header() {
   const pathname = usePathname();
@@ -41,21 +42,36 @@ export function Header() {
   ];
 
   return (
-    <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-5xl">
-      <div className="glass border rounded-2xl shadow-lg px-6 flex h-16 items-center justify-between relative overflow-hidden">
+    <motion.header 
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-5xl"
+    >
+      <motion.div 
+        initial={{ scale: 0.95 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 0.3, delay: 0.2 }}
+        className="glass border rounded-2xl shadow-lg px-6 flex h-16 items-center justify-between relative overflow-hidden"
+      >
         {/* Pixel Runner Background Animation */}
         <PixelRunner />
         
         <div className="flex items-center gap-8 relative z-10">
           <Link href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-            <Image
-              src="/images/MetalabsH.png"
-              alt="Metalabs"
-              width={140}
-              height={46}
-              className="h-8 w-auto"
-              priority
-            />
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
+              <Image
+                src="/images/MetalabsH.png"
+                alt="Metalabs"
+                width={140}
+                height={46}
+                className="h-8 w-auto"
+                priority
+              />
+            </motion.div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -217,7 +233,7 @@ export function Header() {
             </nav>
           </SheetContent>
         </Sheet>
-      </div>
-    </header>
+      </motion.div>
+    </motion.header>
   );
 }
