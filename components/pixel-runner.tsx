@@ -15,7 +15,7 @@ export function PixelRunner() {
   const checkObstacleCollision = useCallback((pos: number) => {
     for (const obstaclePos of obstacles) {
       // If character is approaching an obstacle (within 5% distance)
-      if (pos >= obstaclePos - 3 && pos <= obstaclePos - 2) {
+      if (pos >= obstaclePos - 3 && pos <= obstaclePos - 2  ) {
         return true;
       }
     }
