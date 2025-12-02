@@ -186,3 +186,17 @@
   background: rgba(20, 20, 20, 0.7);
   border: 1px solid rgba(216, 111, 117, 0.15);
 }
+
+/* Shine animation for text */
+@keyframes shine {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+.animate-shine {
+  animation: shine 3s linear infinite;
+}

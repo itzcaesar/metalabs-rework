@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
         hostname: "metalabs.id",
         pathname: "/wp-content/uploads/**",
       },
+      {
+        protocol: "https",
+        hostname: "bit-jkt.telkomuniversity.ac.id",
+        pathname: "/wp-content/uploads/**",
+      },
     ],
   },
 };
