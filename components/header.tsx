@@ -135,37 +135,40 @@ export function Header() {
               <span className="sr-only">Toggle menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+          <SheetContent side="right" className="w-[280px] sm:w-[320px] p-0">
             <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-            <nav className="flex flex-col space-y-4 mt-4">
-              {routes.map((route) => (
-                <Link
-                  key={route.href}
-                  href={route.href}
-                  className={`text-lg transition-colors hover:text-foreground/80 ${
-                    pathname === route.href
-                      ? "text-foreground font-semibold"
-                      : "text-foreground/60"
-                  }`}
-                >
-                  {route.label}
-                </Link>
-              ))}
+            <nav className="flex flex-col h-full">
+              {/* Main Navigation Links */}
+              <div className="flex flex-col py-4 px-6">
+                {routes.map((route) => (
+                  <Link
+                    key={route.href}
+                    href={route.href}
+                    className={`py-3 text-base transition-colors hover:text-primary ${
+                      pathname === route.href
+                        ? "text-foreground font-semibold"
+                        : "text-foreground/70"
+                    }`}
+                  >
+                    {route.label}
+                  </Link>
+                ))}
+              </div>
               
               {/* Achievement Section */}
-              <div className="pt-2 border-t">
-                <div className="flex items-center gap-2 mb-3">
+              <div className="px-6 py-4 border-t border-border">
+                <div className="flex items-center gap-2 mb-2">
                   <Trophy className="h-4 w-4 text-primary" />
-                  <span className="font-semibold">Achievements</span>
+                  <span className="font-semibold text-sm">Achievements</span>
                 </div>
-                <div className="flex flex-col space-y-2 pl-6">
+                <div className="flex flex-col pl-6">
                   {achievementItems.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
-                      className={`transition-colors hover:text-foreground/80 ${
+                      className={`py-2 text-sm transition-colors hover:text-primary ${
                         pathname === item.href
-                          ? "text-foreground font-semibold"
+                          ? "text-foreground font-medium"
                           : "text-foreground/60"
                       }`}
                     >
@@ -176,19 +179,19 @@ export function Header() {
               </div>
 
               {/* Library Section */}
-              <div className="pt-2 border-t">
-                <div className="flex items-center gap-2 mb-3">
+              <div className="px-6 py-4 border-t border-border">
+                <div className="flex items-center gap-2 mb-2">
                   <BookOpen className="h-4 w-4 text-primary" />
-                  <span className="font-semibold">Library</span>
+                  <span className="font-semibold text-sm">Library</span>
                 </div>
-                <div className="flex flex-col space-y-2 pl-6">
+                <div className="flex flex-col pl-6">
                   {libraryItems.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
-                      className={`transition-colors hover:text-foreground/80 ${
+                      className={`py-2 text-sm transition-colors hover:text-primary ${
                         pathname === item.href
-                          ? "text-foreground font-semibold"
+                          ? "text-foreground font-medium"
                           : "text-foreground/60"
                       }`}
                     >
@@ -198,7 +201,8 @@ export function Header() {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-4 pt-4 border-t">
+              {/* Theme Toggle at Bottom */}
+              <div className="mt-auto px-6 py-4 border-t border-border">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-muted-foreground">Theme</span>
                   <ThemeToggle />
