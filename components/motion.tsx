@@ -1,15 +1,15 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
-import { ReactNode } from "react";
+import { motion, Variants, useReducedMotion } from "framer-motion";
+import { ReactNode, memo } from "react";
 
-// Animation Variants
+// Animation Variants - Optimized with will-change hints
 export const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: { 
     opacity: 1, 
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" }
+    transition: { duration: 0.5, ease: "easeOut" }
   }
 };
 
@@ -18,34 +18,34 @@ export const fadeInDown: Variants = {
   visible: { 
     opacity: 1, 
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" }
+    transition: { duration: 0.5, ease: "easeOut" }
   }
 };
 
 export const fadeInLeft: Variants = {
-  hidden: { opacity: 0, x: -50 },
+  hidden: { opacity: 0, x: -40 },
   visible: { 
     opacity: 1, 
     x: 0,
-    transition: { duration: 0.6, ease: "easeOut" }
+    transition: { duration: 0.5, ease: "easeOut" }
   }
 };
 
 export const fadeInRight: Variants = {
-  hidden: { opacity: 0, x: 50 },
+  hidden: { opacity: 0, x: 40 },
   visible: { 
     opacity: 1, 
     x: 0,
-    transition: { duration: 0.6, ease: "easeOut" }
+    transition: { duration: 0.5, ease: "easeOut" }
   }
 };
 
 export const scaleIn: Variants = {
-  hidden: { opacity: 0, scale: 0.8 },
+  hidden: { opacity: 0, scale: 0.9 },
   visible: { 
     opacity: 1, 
     scale: 1,
-    transition: { duration: 0.5, ease: "easeOut" }
+    transition: { duration: 0.4, ease: "easeOut" }
   }
 };
 
@@ -54,132 +54,162 @@ export const staggerContainer: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.1,
+      staggerChildren: 0.08,
+      delayChildren: 0.05,
     }
   }
 };
 
 export const staggerItem: Variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 15 },
   visible: { 
     opacity: 1, 
     y: 0,
-    transition: { duration: 0.5, ease: "easeOut" }
+    transition: { duration: 0.4, ease: "easeOut" }
   }
 };
 
-// Reusable Motion Components
+// Reusable Motion Components - Memoized for performance
 interface MotionProps {
   children: ReactNode;
   className?: string;
   delay?: number;
 }
 
-export function FadeInUp({ children, className = "", delay = 0 }: MotionProps) {
+export const FadeInUp = memo(function FadeInUp({ children, className = "", delay = 0 }: MotionProps) {
+  const shouldReduceMotion = useReducedMotion();
+  
+  if (shouldReduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+  
   return (
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: "-80px" }}
       variants={{
-        hidden: { opacity: 0, y: 30 },
+        hidden: { opacity: 0, y: 25 },
         visible: { 
           opacity: 1, 
           y: 0,
-          transition: { duration: 0.6, ease: "easeOut", delay }
-        }
-      }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-export function FadeInDown({ children, className = "", delay = 0 }: MotionProps) {
-  return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
-      variants={{
-        hidden: { opacity: 0, y: -30 },
-        visible: { 
-          opacity: 1, 
-          y: 0,
-          transition: { duration: 0.6, ease: "easeOut", delay }
-        }
-      }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-export function FadeInLeft({ children, className = "", delay = 0 }: MotionProps) {
-  return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
-      variants={{
-        hidden: { opacity: 0, x: -50 },
-        visible: { 
-          opacity: 1, 
-          x: 0,
-          transition: { duration: 0.6, ease: "easeOut", delay }
-        }
-      }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-export function FadeInRight({ children, className = "", delay = 0 }: MotionProps) {
-  return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
-      variants={{
-        hidden: { opacity: 0, x: 50 },
-        visible: { 
-          opacity: 1, 
-          x: 0,
-          transition: { duration: 0.6, ease: "easeOut", delay }
-        }
-      }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-export function ScaleIn({ children, className = "", delay = 0 }: MotionProps) {
-  return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
-      variants={{
-        hidden: { opacity: 0, scale: 0.8 },
-        visible: { 
-          opacity: 1, 
-          scale: 1,
           transition: { duration: 0.5, ease: "easeOut", delay }
         }
       }}
-      className={className}
+      className={`will-change-transform ${className}`}
     >
       {children}
     </motion.div>
   );
-}
+});
+
+export const FadeInDown = memo(function FadeInDown({ children, className = "", delay = 0 }: MotionProps) {
+  const shouldReduceMotion = useReducedMotion();
+  
+  if (shouldReduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+  
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-80px" }}
+      variants={{
+        hidden: { opacity: 0, y: -25 },
+        visible: { 
+          opacity: 1, 
+          y: 0,
+          transition: { duration: 0.5, ease: "easeOut", delay }
+        }
+      }}
+      className={`will-change-transform ${className}`}
+    >
+      {children}
+    </motion.div>
+  );
+});
+
+export const FadeInLeft = memo(function FadeInLeft({ children, className = "", delay = 0 }: MotionProps) {
+  const shouldReduceMotion = useReducedMotion();
+  
+  if (shouldReduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+  
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-80px" }}
+      variants={{
+        hidden: { opacity: 0, x: -40 },
+        visible: { 
+          opacity: 1, 
+          x: 0,
+          transition: { duration: 0.5, ease: "easeOut", delay }
+        }
+      }}
+      className={`will-change-transform ${className}`}
+    >
+      {children}
+    </motion.div>
+  );
+});
+
+export const FadeInRight = memo(function FadeInRight({ children, className = "", delay = 0 }: MotionProps) {
+  const shouldReduceMotion = useReducedMotion();
+  
+  if (shouldReduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+  
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-80px" }}
+      variants={{
+        hidden: { opacity: 0, x: 40 },
+        visible: { 
+          opacity: 1, 
+          x: 0,
+          transition: { duration: 0.5, ease: "easeOut", delay }
+        }
+      }}
+      className={`will-change-transform ${className}`}
+    >
+      {children}
+    </motion.div>
+  );
+});
+
+export const ScaleIn = memo(function ScaleIn({ children, className = "", delay = 0 }: MotionProps) {
+  const shouldReduceMotion = useReducedMotion();
+  
+  if (shouldReduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+  
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-80px" }}
+      variants={{
+        hidden: { opacity: 0, scale: 0.9 },
+        visible: { 
+          opacity: 1, 
+          scale: 1,
+          transition: { duration: 0.4, ease: "easeOut", delay }
+        }
+      }}
+      className={`will-change-transform ${className}`}
+    >
+      {children}
+    </motion.div>
+  );
+});
 
 interface StaggerProps {
   children: ReactNode;
@@ -187,19 +217,25 @@ interface StaggerProps {
   staggerDelay?: number;
 }
 
-export function StaggerContainer({ children, className = "", staggerDelay = 0.1 }: StaggerProps) {
+export const StaggerContainer = memo(function StaggerContainer({ children, className = "", staggerDelay = 0.08 }: StaggerProps) {
+  const shouldReduceMotion = useReducedMotion();
+  
+  if (shouldReduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+  
   return (
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: "-80px" }}
       variants={{
         hidden: { opacity: 0 },
         visible: {
           opacity: 1,
           transition: {
             staggerChildren: staggerDelay,
-            delayChildren: 0.1,
+            delayChildren: 0.05,
           }
         }
       }}
@@ -208,81 +244,98 @@ export function StaggerContainer({ children, className = "", staggerDelay = 0.1 
       {children}
     </motion.div>
   );
-}
+});
 
-export function StaggerItem({ children, className = "" }: Omit<MotionProps, 'delay'>) {
+export const StaggerItem = memo(function StaggerItem({ children, className = "" }: Omit<MotionProps, 'delay'>) {
   return (
     <motion.div
       variants={{
-        hidden: { opacity: 0, y: 20 },
+        hidden: { opacity: 0, y: 15 },
         visible: { 
           opacity: 1, 
           y: 0,
-          transition: { duration: 0.5, ease: "easeOut" }
+          transition: { duration: 0.4, ease: "easeOut" }
         }
       }}
-      className={className}
+      className={`will-change-transform ${className}`}
     >
       {children}
     </motion.div>
   );
-}
+});
 
 // Hover animations for cards
-export function HoverScale({ children, className = "", scale = 1.02 }: MotionProps & { scale?: number }) {
+export const HoverScale = memo(function HoverScale({ children, className = "", scale = 1.02 }: MotionProps & { scale?: number }) {
   return (
     <motion.div
       whileHover={{ scale }}
       whileTap={{ scale: 0.98 }}
-      transition={{ type: "spring", stiffness: 400, damping: 17 }}
+      transition={{ type: "spring", stiffness: 400, damping: 20 }}
       className={className}
     >
       {children}
     </motion.div>
   );
-}
+});
 
-// Floating animation
-export function Float({ children, className = "", duration = 3 }: MotionProps & { duration?: number }) {
+// Floating animation - Simplified for performance
+export const Float = memo(function Float({ children, className = "", duration = 3 }: MotionProps & { duration?: number }) {
+  const shouldReduceMotion = useReducedMotion();
+  
+  if (shouldReduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+  
   return (
     <motion.div
-      animate={{
-        y: [0, -10, 0],
-      }}
+      animate={{ y: [0, -8, 0] }}
       transition={{
         duration,
         repeat: Infinity,
         ease: "easeInOut",
       }}
-      className={className}
+      className={`will-change-transform ${className}`}
     >
       {children}
     </motion.div>
   );
-}
+});
 
 // Pulse animation
-export function Pulse({ children, className = "" }: MotionProps) {
+export const Pulse = memo(function Pulse({ children, className = "" }: MotionProps) {
+  const shouldReduceMotion = useReducedMotion();
+  
+  if (shouldReduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+  
   return (
     <motion.div
       animate={{
-        scale: [1, 1.05, 1],
-        opacity: [1, 0.8, 1],
+        scale: [1, 1.03, 1],
+        opacity: [1, 0.85, 1],
       }}
       transition={{
         duration: 2,
         repeat: Infinity,
         ease: "easeInOut",
       }}
-      className={className}
+      className={`will-change-transform ${className}`}
     >
       {children}
     </motion.div>
   );
-}
+});
+
 
 // Reveal animation (text/content reveal)
-export function Reveal({ children, className = "", delay = 0 }: MotionProps) {
+export const Reveal = memo(function Reveal({ children, className = "", delay = 0 }: MotionProps) {
+  const shouldReduceMotion = useReducedMotion();
+  
+  if (shouldReduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+  
   return (
     <motion.div
       initial="hidden"
@@ -302,15 +355,22 @@ export function Reveal({ children, className = "", delay = 0 }: MotionProps) {
             }
           }
         }}
+        className="will-change-transform"
       >
         {children}
       </motion.div>
     </motion.div>
   );
-}
+});
 
 // Blur in animation
-export function BlurIn({ children, className = "", delay = 0 }: MotionProps) {
+export const BlurIn = memo(function BlurIn({ children, className = "", delay = 0 }: MotionProps) {
+  const shouldReduceMotion = useReducedMotion();
+  
+  if (shouldReduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+  
   return (
     <motion.div
       initial="hidden"
@@ -329,7 +389,7 @@ export function BlurIn({ children, className = "", delay = 0 }: MotionProps) {
       {children}
     </motion.div>
   );
-}
+});
 
 // Counter animation for numbers
 interface CounterProps {
@@ -340,7 +400,13 @@ interface CounterProps {
   suffix?: string;
 }
 
-export function Counter({ from = 0, to, duration = 2, className = "", suffix = "" }: CounterProps) {
+export const Counter = memo(function Counter({ from = 0, to, duration = 2, className = "", suffix = "" }: CounterProps) {
+  const shouldReduceMotion = useReducedMotion();
+  
+  if (shouldReduceMotion) {
+    return <span className={className}>{to}{suffix}</span>;
+  }
+  
   return (
     <motion.span
       initial={{ opacity: 0 }}
@@ -357,14 +423,20 @@ export function Counter({ from = 0, to, duration = 2, className = "", suffix = "
       </motion.span>
     </motion.span>
   );
-}
+});
 
 // Parallax effect
 interface ParallaxProps extends MotionProps {
   speed?: number;
 }
 
-export function Parallax({ children, className = "", speed = 0.5 }: ParallaxProps) {
+export const Parallax = memo(function Parallax({ children, className = "", speed = 0.5 }: ParallaxProps) {
+  const shouldReduceMotion = useReducedMotion();
+  
+  if (shouldReduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+  
   return (
     <motion.div
       initial={{ y: 0 }}
@@ -376,10 +448,22 @@ export function Parallax({ children, className = "", speed = 0.5 }: ParallaxProp
       {children}
     </motion.div>
   );
-}
+});
 
 // Animated gradient border
-export function GradientBorder({ children, className = "" }: MotionProps) {
+export const GradientBorder = memo(function GradientBorder({ children, className = "" }: MotionProps) {
+  const shouldReduceMotion = useReducedMotion();
+  
+  if (shouldReduceMotion) {
+    return (
+      <div className={`relative ${className}`}>
+        <div className="relative bg-card rounded-3xl">
+          {children}
+        </div>
+      </div>
+    );
+  }
+  
   return (
     <motion.div
       className={`relative ${className}`}
@@ -390,7 +474,7 @@ export function GradientBorder({ children, className = "" }: MotionProps) {
         variants={{
           hover: { opacity: 1 }
         }}
-        style={{ backgroundSize: "200% 100%" }}
+        style={{ backgroundSize: "200% 100%", willChange: "opacity" }}
         animate={{
           backgroundPosition: ["0% 0%", "100% 0%", "0% 0%"],
         }}
@@ -405,4 +489,4 @@ export function GradientBorder({ children, className = "" }: MotionProps) {
       </div>
     </motion.div>
   );
-}
+});

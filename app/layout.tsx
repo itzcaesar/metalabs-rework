@@ -10,11 +10,13 @@ import "./globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 // Pixel art fonts
@@ -22,12 +24,14 @@ const pressStart2P = Press_Start_2P({
   variable: "--font-pixel",
   subsets: ["latin"],
   weight: "400",
+  display: "swap",
 });
 
 const vt323 = VT323({
   variable: "--font-pixel-body",
   subsets: ["latin"],
   weight: "400",
+  display: "swap",
 });
 
 export const metadata: Metadata = {

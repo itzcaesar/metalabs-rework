@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, memo } from "react";
 import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -57,24 +57,35 @@ const products = [
   },
 ];
 
-export function ProductCarousel() {
+export const ProductCarousel = memo(function ProductCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+    
+    // Debounced resize handler
+    let timeoutId: NodeJS.Timeout;
+    const handleResize = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(checkMobile, 150);
+    };
+    
+    window.addEventListener("resize", handleResize, { passive: true });
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
-  const navigate = (direction: "left" | "right") => {
+  const navigate = useCallback((direction: "left" | "right") => {
     if (direction === "right") {
       setCurrentIndex((prev) => (prev + 1) % products.length);
     } else {
       setCurrentIndex((prev) => (prev - 1 + products.length) % products.length);
     }
-  };
+  }, []);
 
   const getCardStyle = (index: number) => {
     const totalProducts = products.length;
@@ -171,6 +182,9 @@ export function ProductCarousel() {
                       alt={product.name}
                       fill
                       className="object-contain bg-black transition-transform duration-500 group-hover:scale-105"
+                      priority
+                      sizes="(max-width: 768px) 280px, 550px"
+                      quality={80}
                     />
                     {/* Default gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent transition-opacity duration-300 md:group-hover:opacity-0" />
@@ -204,6 +218,9 @@ export function ProductCarousel() {
                     alt={product.name}
                     fill
                     className="object-contain bg-black"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 280px, 550px"
+                    quality={75}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-3 md:p-6">
@@ -241,4 +258,4 @@ export function ProductCarousel() {
       </div>
     </div>
   );
-}
+});
