@@ -70,7 +70,7 @@ export default function AboutPage() {
                 <span className="text-sm font-medium">About Us</span>
               </div>
               
-              <h1 className="text-5xl sm:text-6xl font-bold mb-6 leading-tight">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 leading-tight font-pixel">
                 Interactive
                 <br />
                 Multimedia
@@ -121,7 +121,7 @@ export default function AboutPage() {
       <section className="py-24 bg-muted/30">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <h2 className="text-xl sm:text-2xl font-bold mb-4 font-pixel">
               Our Core <span className="gradient-text">Values</span>
             </h2>
             <p className="text-muted-foreground">
@@ -168,7 +168,7 @@ export default function AboutPage() {
       <section className="py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <h2 className="text-xl sm:text-2xl font-bold mb-4 font-pixel">
               Meet Our <span className="gradient-text">Leaders</span>
             </h2>
             <p className="text-muted-foreground">
@@ -246,7 +246,7 @@ export default function AboutPage() {
       <section className="py-24 bg-muted/30">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <h2 className="text-xl sm:text-2xl font-bold mb-4 font-pixel">
               Focus <span className="gradient-text">Areas</span>
             </h2>
           </div>
@@ -277,7 +277,7 @@ export default function AboutPage() {
                 className="object-contain"
               />
             </div>
-            <h2 className="text-3xl font-bold mb-6">
+            <h2 className="text-xl sm:text-2xl font-bold mb-6 font-pixel">
               Part of <span className="gradient-text">Telkom University</span>
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
@@ -292,7 +292,7 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="py-24 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+          <h2 className="text-xl sm:text-2xl font-bold mb-6 font-pixel">
             Want to Join Our Team?
           </h2>
           <p className="text-xl text-muted-foreground mb-8">

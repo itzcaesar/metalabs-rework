@@ -72,7 +72,7 @@ export default function ResearchPage() {
                 <span className="text-sm font-medium">Research & Collaboration</span>
               </div>
               
-              <h1 className="text-5xl sm:text-6xl font-bold mb-6 leading-tight">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 leading-tight font-pixel">
                 Advancing
                 <br />
                 <span className="gradient-text">Knowledge</span>
@@ -143,7 +143,7 @@ export default function ResearchPage() {
       <section className="py-24 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <h2 className="text-xl sm:text-2xl font-bold mb-4 font-pixel">
               Research Focus <span className="gradient-text">Areas</span>
             </h2>
             <p className="text-muted-foreground">
@@ -191,7 +191,7 @@ export default function ResearchPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+              <h2 className="text-xl sm:text-2xl font-bold mb-6 font-pixel">
                 Research <span className="gradient-text">Impact</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
@@ -231,7 +231,7 @@ export default function ResearchPage() {
       {/* CTA */}
       <section className="py-24 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+          <h2 className="text-xl sm:text-2xl font-bold mb-6 font-pixel">
             Interested in Collaboration?
           </h2>
           <p className="text-xl text-muted-foreground mb-8">

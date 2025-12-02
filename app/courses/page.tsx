@@ -95,7 +95,7 @@ export default function CoursesPage() {
                 <span className="text-sm font-medium">Training Programs</span>
               </div>
               
-              <h1 className="text-5xl sm:text-6xl font-bold mb-6 leading-tight">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 leading-tight font-pixel">
                 Learn From
                 <br />
                 <span className="gradient-text">The Best</span>
@@ -166,7 +166,7 @@ export default function CoursesPage() {
               <BookOpen className="w-4 h-4 text-primary" />
               <span className="text-sm font-medium">Free Resources</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <h2 className="text-xl sm:text-2xl font-bold mb-4 font-pixel">
               Our Free <span className="gradient-text">Education Materials</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -213,7 +213,7 @@ export default function CoursesPage() {
       {/* Partner Universities - Horizontal Scroll */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4">
+          <h2 className="text-xl sm:text-2xl font-bold text-center mb-4 font-pixel">
             Partner <span className="gradient-text">Institutions</span>
           </h2>
           <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
@@ -248,7 +248,7 @@ export default function CoursesPage() {
       {/* Course Topics - List Layout */}
       <section className="py-20 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4">
+          <h2 className="text-xl sm:text-2xl font-bold text-center mb-4 font-pixel">
             What We <span className="gradient-text">Teach</span>
           </h2>
           <p className="text-center text-muted-foreground mb-12">
@@ -279,7 +279,7 @@ export default function CoursesPage() {
       {/* CTA */}
       <section className="py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+          <h2 className="text-xl sm:text-2xl font-bold mb-6 font-pixel">
             Ready to Start Learning?
           </h2>
           <p className="text-xl text-muted-foreground mb-8">

@@ -41,7 +41,7 @@ export default function ProductPage() {
               <span className="text-sm font-medium">Our Creative Works</span>
             </div>
             
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 font-pixel">
               <Link 
                 href="https://docs.google.com/presentation/d/1zlQPnoIkl0goyz0Lnn0UI70SKErgOfJt0ep0MWUW-UU/edit?slide=id.g32869c12113_0_311#slide=id.g32869c12113_0_311"
                 target="_blank"
@@ -94,7 +94,7 @@ export default function ProductPage() {
       <section className="py-24 bg-muted/30">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <h2 className="text-xl sm:text-2xl font-bold mb-4 font-pixel">
               Technologies & <span className="gradient-text">Capabilities</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -130,7 +130,7 @@ export default function ProductPage() {
       <section className="py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-card border border-border rounded-3xl p-12 text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <h2 className="text-xl sm:text-2xl font-bold mb-4 font-pixel">
               Interested in Our Products?
             </h2>
             <p className="text-xl text-muted-foreground mb-8">

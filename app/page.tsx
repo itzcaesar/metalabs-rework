@@ -64,7 +64,7 @@ export default function HomePage() {
             />
           </div>
           
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 animate-fadeInUp" style={{ animationDelay: '0.15s' }}>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 animate-fadeInUp font-pixel" style={{ animationDelay: '0.15s' }}>
             <span className="text-foreground/90">Interactive Multimedia For Everything</span>
           </h1>
           
@@ -109,7 +109,7 @@ export default function HomePage() {
             <span className="text-sm font-medium">About Metalabs</span>
           </div>
           
-          <h2 className="text-4xl sm:text-5xl font-bold mb-8">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-8 font-pixel">
             Where Innovation Meets{" "}
             <span className="gradient-text">Education</span>
           </h2>
@@ -136,7 +136,7 @@ export default function HomePage() {
               <Sparkles className="w-4 h-4 text-primary" />
               <span className="text-sm font-medium">Featured Products</span>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-2">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4 font-pixel">
               Our <span className="gradient-text">Products</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -172,7 +172,7 @@ export default function HomePage() {
               <span className="text-sm font-medium">What We Do</span>
             </div>
             
-            <h2 className="text-4xl sm:text-5xl font-bold">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold font-pixel">
               Our <span className="gradient-text">Expertise</span>
             </h2>
           </div>
@@ -244,7 +244,7 @@ export default function HomePage() {
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#DD2F37] via-[#D86F75] to-[#B86A6E] p-12 sm:p-16 text-white text-center">
             <div className="absolute inset-0 bg-black/20" />
             <div className="relative z-10">
-              <h2 className="text-3xl sm:text-5xl font-bold mb-6">
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-6 font-pixel">
                 Ready to Transform Education?
               </h2>
               <p className="text-lg sm:text-xl text-white/90 mb-10 max-w-2xl mx-auto">
