@@ -1,56 +1,49 @@
-import { Sidebar } from "@/components/sidebar";
 import { ProductCard } from "@/components/product-card";
+import { ProductCarousel } from "@/components/product-carousel";
+import { BackgroundSlider } from "@/components/background-slider";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Sparkles, Zap, Trophy, BookOpen } from "lucide-react";
+import { ArrowRight, Sparkles, Zap, Trophy, BookOpen, Gamepad2, GraduationCap, Glasses, FlaskConical } from "lucide-react";
 
 export default function HomePage() {
   const stats = [
-    { label: "Active Projects", value: "50+" },
-    { label: "Research Papers", value: "100+" },
-    { label: "Student Teams", value: "30+" },
-    { label: "Awards Won", value: "25+" },
+    { label: "Startup Created", value: "10" },
+    { label: "Metalabs Assistant", value: "60" },
+    { label: "Client Happy", value: "5" },
+    { label: "Total Research", value: "22" },
   ];
 
   const features = [
     {
-      icon: "🎮",
+      icon: Gamepad2,
       title: "Game Development",
       description: "Creating immersive gaming experiences with cutting-edge technology and innovative gameplay mechanics.",
-      gradient: "from-[#DD2F37] to-[#D86F75]",
     },
     {
-      icon: "📚",
+      icon: GraduationCap,
       title: "Interactive Learning",
       description: "Transforming education through game-based learning and engaging digital experiences.",
-      gradient: "from-[#B86A6E] to-[#D86F75]",
     },
     {
-      icon: "🥽",
+      icon: Glasses,
       title: "AR/VR Solutions",
       description: "Building immersive augmented and virtual reality experiences for education and beyond.",
-      gradient: "from-[#D86F75] to-[#E89A9E]",
     },
     {
-      icon: "🔬",
+      icon: FlaskConical,
       title: "Research Innovation",
       description: "Advancing knowledge through collaborative research and cutting-edge technology.",
-      gradient: "from-[#DD2F37] to-[#B86A6E]",
     },
   ];
 
   return (
     <div className="w-full">
       {/* Hero Section - Full Width */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-background to-primary/5">
-        {/* Animated Background */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-[#DD2F37]/20 rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#D86F75]/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#B86A6E]/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }} />
-        </div>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Image Slider */}
+        <BackgroundSlider />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8 animate-fadeInUp">
             <Sparkles className="w-4 h-4 text-primary" />
             <span className="text-sm font-medium">Telkom University Research Lab</span>
@@ -86,7 +79,7 @@ export default function HomePage() {
             </Link>
             <Link 
               href="/research"
-              className="px-8 py-4 glass hover:bg-accent rounded-full font-semibold transition-all transform hover:scale-105 flex items-center gap-2"
+              className="px-10 py-4 glass hover:bg-accent rounded-full font-semibold transition-all transform hover:scale-105 flex items-center gap-2"
             >
               <BookOpen className="w-5 h-5" />
               View Research
@@ -105,148 +98,173 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Main Content Area */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="flex flex-col lg:flex-row gap-12">
-          {/* Left Column - Main Content */}
-          <div className="flex-1 space-y-20">
-            {/* About Section */}
-            <section>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-                <Zap className="w-4 h-4 text-primary" />
-                <span className="text-sm font-medium">About Metalabs</span>
-              </div>
-              
-              <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-                Where Innovation Meets{" "}
-                <span className="gradient-text">Education</span>
-              </h2>
-              
-              <div className="prose prose-lg prose-neutral dark:prose-invert max-w-none">
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Welcome to Metalabs, the Multimedia Engineering Research Laboratory at Telkom University. 
-                  We specialize in interactive multimedia for everything, driving innovation in game-based learning, 
-                  educational technology, and immersive experiences.
-                </p>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Guided by our core values of <strong className="text-foreground">Education</strong>,{" "}
-                  <strong className="text-foreground">Incubation</strong>, and{" "}
-                  <strong className="text-foreground">Monetization</strong>, we transform creative ideas into 
-                  impactful solutions that benefit students, researchers, and the wider community.
-                </p>
-              </div>
-            </section>
+      {/* About Section */}
+      <section className="py-24 bg-muted/30">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8">
+            <Zap className="w-4 h-4 text-primary" />
+            <span className="text-sm font-medium">About Metalabs</span>
+          </div>
+          
+          <h2 className="text-4xl sm:text-5xl font-bold mb-8">
+            Where Innovation Meets{" "}
+            <span className="gradient-text">Education</span>
+          </h2>
+          
+          <p className="text-xl text-muted-foreground leading-relaxed mb-6">
+            Welcome to Metalabs, the Multimedia Engineering Research Laboratory at Telkom University. 
+            We specialize in interactive multimedia for everything, driving innovation in game-based learning, 
+            educational technology, and immersive experiences.
+          </p>
+          <p className="text-xl text-muted-foreground leading-relaxed">
+            Guided by our core values of <strong className="text-foreground">Education</strong>,{" "}
+            <strong className="text-foreground">Incubation</strong>, and{" "}
+            <strong className="text-foreground">Monetization</strong>, we transform creative ideas into 
+            impactful solutions that benefit students, researchers, and the wider community.
+          </p>
+        </div>
+      </section>
 
-            {/* Features Section */}
-            <section>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-                <Trophy className="w-4 h-4 text-primary" />
-                <span className="text-sm font-medium">What We Do</span>
-              </div>
-              
-              <h2 className="text-4xl sm:text-5xl font-bold mb-12">
-                Our <span className="gradient-text">Expertise</span>
-              </h2>
+      {/* Products Section */}
+      <section className="py-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-2">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
+              <Sparkles className="w-4 h-4 text-primary" />
+              <span className="text-sm font-medium">Featured Products</span>
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-2">
+              Our <span className="gradient-text">Products</span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Explore our innovative games and interactive multimedia applications
+            </p>
+          </div>
+        </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {features.map((feature, idx) => (
-                  <div
-                    key={idx}
-                    className="group relative p-8 rounded-3xl bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10"
-                  >
-                    <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 rounded-3xl transition-opacity duration-300`} />
-                    
-                    <div className="relative z-10">
-                      <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                        <span className="text-3xl">{feature.icon}</span>
-                      </div>
-                      
-                      <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
-                        {feature.title}
-                      </h3>
-                      
-                      <p className="text-muted-foreground leading-relaxed">
-                        {feature.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
+        {/* Full Width Carousel */}
+        <div className="w-full">
+          <ProductCarousel />
+        </div>
 
-            {/* Products Section */}
-            <section>
-              <div className="flex items-center justify-between mb-12">
-                <div>
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-                    <Sparkles className="w-4 h-4 text-primary" />
-                    <span className="text-sm font-medium">Featured Products</span>
-                  </div>
-                  <h2 className="text-4xl sm:text-5xl font-bold">
-                    Our <span className="gradient-text">Products</span>
-                  </h2>
-                </div>
-                <Link 
-                  href="/product"
-                  className="hidden md:flex items-center gap-2 text-primary hover:gap-3 transition-all"
-                >
-                  View All
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              </div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+          <div className="text-center">
+            <Link 
+              href="/product"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full font-semibold transition-all transform hover:scale-105"
+            >
+              View All Products
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <ProductCard name="Itara" image="Itara.jpg" />
-                <ProductCard name="Grimmater" image="Grimmater.png" />
-                <ProductCard name="Metaspeak" image="Metaspeak.png" />
-                <ProductCard name="ARMazing" image="Screenshot_20241213_154131.png" />
-              </div>
-
-              <Link 
-                href="/product"
-                className="md:hidden flex items-center justify-center gap-2 text-primary hover:gap-3 transition-all mt-8"
-              >
-                View All Products
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </section>
-
-            {/* CTA Section */}
-            <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#DD2F37] via-[#D86F75] to-[#B86A6E] p-12 text-white text-center">
-              <div className="absolute inset-0 bg-black/20" />
-              <div className="relative z-10">
-                <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                  Ready to Transform Education?
-                </h2>
-                <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-                  Join us in creating innovative solutions for game-based learning and educational technology
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link 
-                    href="/courses"
-                    className="px-8 py-4 bg-white text-[#DD2F37] rounded-full font-semibold hover:bg-white/90 transition-all transform hover:scale-105"
-                  >
-                    Explore Courses
-                  </Link>
-                  <Link 
-                    href="/about"
-                    className="px-8 py-4 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full font-semibold hover:bg-white/30 transition-all transform hover:scale-105"
-                  >
-                    Learn More
-                  </Link>
-                </div>
-              </div>
-            </section>
+      {/* Features Section - Bento Grid */}
+      <section className="py-24 bg-muted/30">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+              <Trophy className="w-4 h-4 text-primary" />
+              <span className="text-sm font-medium">What We Do</span>
+            </div>
+            
+            <h2 className="text-4xl sm:text-5xl font-bold">
+              Our <span className="gradient-text">Expertise</span>
+            </h2>
           </div>
 
-          {/* Right Column - Sidebar */}
-          <div className="lg:w-80 shrink-0">
-            <div className="lg:sticky lg:top-24">
-              <Sidebar />
+          {/* Bento Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[180px]">
+            {/* Game Development - Large */}
+            <div className="md:col-span-2 md:row-span-2 group relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#DD2F37] to-[#B86A6E] p-8 flex flex-col justify-end cursor-pointer hover:scale-[1.02] transition-transform duration-300">
+              <div className="absolute top-6 right-6">
+                <Gamepad2 className="w-16 h-16 text-white/20" />
+              </div>
+              <div className="relative z-10">
+                <h3 className="text-3xl font-bold text-white mb-3">
+                  {features[0].title}
+                </h3>
+                <p className="text-white/80 text-lg leading-relaxed">
+                  {features[0].description}
+                </p>
+              </div>
+            </div>
+
+            {/* Interactive Learning */}
+            <div className="md:col-span-2 group relative rounded-3xl overflow-hidden bg-card border border-border p-6 flex items-center gap-6 cursor-pointer hover:border-primary/50 hover:shadow-xl transition-all duration-300">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#DD2F37] to-[#D86F75] flex items-center justify-center shrink-0">
+                <GraduationCap className="w-8 h-8 text-white" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                  {features[1].title}
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  {features[1].description}
+                </p>
+              </div>
+            </div>
+
+            {/* AR/VR Solutions */}
+            <div className="group relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#D86F75] to-[#E89A9E] p-6 flex flex-col justify-between cursor-pointer hover:scale-[1.02] transition-transform duration-300">
+              <Glasses className="w-10 h-10 text-white/80" />
+              <div>
+                <h3 className="text-xl font-bold text-white mb-1">
+                  {features[2].title}
+                </h3>
+                <p className="text-white/70 text-sm">
+                  AR & VR experiences
+                </p>
+              </div>
+            </div>
+
+            {/* Research Innovation */}
+            <div className="group relative rounded-3xl overflow-hidden bg-card border border-border p-6 flex flex-col justify-between cursor-pointer hover:border-primary/50 hover:shadow-xl transition-all duration-300">
+              <FlaskConical className="w-10 h-10 text-primary" />
+              <div>
+                <h3 className="text-xl font-bold group-hover:text-primary transition-colors mb-1">
+                  {features[3].title}
+                </h3>
+                <p className="text-muted-foreground text-sm">
+                  Cutting-edge research
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#DD2F37] via-[#D86F75] to-[#B86A6E] p-12 sm:p-16 text-white text-center">
+            <div className="absolute inset-0 bg-black/20" />
+            <div className="relative z-10">
+              <h2 className="text-3xl sm:text-5xl font-bold mb-6">
+                Ready to Transform Education?
+              </h2>
+              <p className="text-lg sm:text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+                Join us in creating innovative solutions for game-based learning and educational technology
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link 
+                  href="/courses"
+                  className="px-8 py-4 bg-white text-[#DD2F37] rounded-full font-semibold hover:bg-white/90 transition-all transform hover:scale-105"
+                >
+                  Explore Courses
+                </Link>
+                <Link 
+                  href="/about"
+                  className="px-8 py-4 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full font-semibold hover:bg-white/30 transition-all transform hover:scale-105"
+                >
+                  Learn More
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
