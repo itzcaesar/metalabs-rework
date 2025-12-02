@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { LoadingBarWrapper } from "@/components/loading-bar-wrapper";
+import { PageTransition } from "@/components/page-transition";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -36,9 +38,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <LoadingBarWrapper />
           <div className="min-h-screen flex flex-col w-full">
             <Header />
-            <main className="flex-1 w-full">{children}</main>
+            <main className="flex-1 w-full">
+              <PageTransition>{children}</PageTransition>
+            </main>
             <Footer />
           </div>
         </ThemeProvider>
